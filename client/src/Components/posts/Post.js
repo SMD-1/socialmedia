@@ -1,15 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import * as MaterialIcon from "react-icons/md";
-import { User } from "../../data";
+import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 import "./post.css";
 
 const Post = ({ post }) => {
-  console.log(post);
-  const { photo, caption, date, like, comment, userId } = post;
-  const [likes, setLikes] = useState(like);
+  // console.log(post);
+  const { img, description, createdAt, likes, comment, userId } = post;
+  const [like, setLike] = useState(likes.length);
   const [isLiked, setIsLiked] = useState(false);
+  const [user, setUser] = useState({});
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users/${userId}`);
+      // console.log(res);
+      setUser(res.data);
+    };
+    fetchUser();
+    // eslint-disable-next-line
+  }, [userId]);
   const likeHandler = () => {
-    setLikes(isLiked ? likes - 1 : likes + 1);
+    setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
     // document.getElementById("likeButton").style.color = "#1D4ED8";
     // document.getElementById("loveButton").style.color = "#E11D48";
@@ -19,16 +33,16 @@ const Post = ({ post }) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <img
-              src={User.filter((u) => u.id === userId)[0].profilePicture}
-              alt="user-profile"
-            />
+            <Link to={`profile/${user.username}`}>
+              <img
+                src={user.profilePicture || `${PF}images/user.png`}
+                alt="user-profile"
+              />
+            </Link>
             <div className="postDetails">
-              <span className="postUserName">
-                {User.filter((u) => u.id === userId)[0].username}
-              </span>
+              <span className="postUserName">{user.username}</span>
               <small>
-                <span className="postDate">{date}</span>
+                <span className="postDate">{format(createdAt)}</span>
               </small>
             </div>
           </div>
@@ -39,9 +53,9 @@ const Post = ({ post }) => {
         <hr className="postHr" />
         <div className="postCenter">
           <span className="caption">
-            <p> {caption} </p>
+            <p> {description} </p>
           </span>
-          <img src={photo} alt="post1" className="postImage" />
+          <img src={PF + img} alt="post1" className="postImage" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
@@ -57,7 +71,7 @@ const Post = ({ post }) => {
               color="#E11D48"
               onClick={likeHandler}
             />
-            <span className="likeCount">{likes} people liked it</span>
+            <span className="likeCount">{like} people liked it</span>
           </div>
           <div className="postBottomRight">
             <span className="postComment">{comment} Comments</span>

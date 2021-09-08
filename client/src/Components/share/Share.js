@@ -22,7 +22,7 @@ const Share = () => {
                 size="1.3rem"
                 className="shareOptionIcon"
               />
-              <sapn className="shareOptionText">Photo/Video</sapn>
+              <span className="shareOptionText">Photo/Video</span>
             </div>
             <div className="shareOption">
               <MaterialIcon.MdVideoCall
@@ -30,7 +30,7 @@ const Share = () => {
                 size="1.5rem"
                 className="shareOptionIcon"
               />
-              <sapn className="shareOptionText">Room</sapn>
+              <span className="shareOptionText">Room</span>
             </div>
             <div className="shareOption">
               <MaterialIcon.MdInsertEmoticon
@@ -38,7 +38,7 @@ const Share = () => {
                 size="1.3rem"
                 className="shareOptionIcon"
               />
-              <sapn className="shareOptionText">Emotions</sapn>
+              <span className="shareOptionText">Emotions</span>
             </div>
             <button className="shareButton">Share</button>
           </div>

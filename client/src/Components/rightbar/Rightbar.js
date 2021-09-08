@@ -4,6 +4,8 @@ import Online from "../online/Online";
 import "./rightbar.css";
 
 const Rightbar = ({ profile }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   console.log(profile);
   const HomeRightBar = () => {
     return (
@@ -49,51 +51,51 @@ const Rightbar = ({ profile }) => {
         <div className="rightBarFollowings">
           <div className="rightBarFollowing">
             <img
-              src="assets/images/user1.jpg"
+              src={`${PF}images/user1.jpg`}
               alt="friend"
               className="rightBarFollowingImg"
             />
-            <sapn className="rigthBarFollowingName">John Doe</sapn>
+            <span className="rigthBarFollowingName">John Doe</span>
           </div>
           <div className="rightBarFollowing">
             <img
-              src="assets/images/user2.jpg"
+              src={`${PF}images/user2.jpg`}
               alt="friend"
               className="rightBarFollowingImg"
             />
-            <sapn className="rigthBarFollowingName">John Doe</sapn>
+            <span className="rigthBarFollowingName">John Doe</span>
           </div>
           <div className="rightBarFollowing">
             <img
-              src="assets/images/user4.jpg"
+              src={`${PF}images/user4.jpg`}
               alt="friend"
               className="rightBarFollowingImg"
             />
-            <sapn className="rigthBarFollowingName">John Doe</sapn>
+            <span className="rigthBarFollowingName">John Doe</span>
           </div>
           <div className="rightBarFollowing">
             <img
-              src="assets/images/user5.jpg"
+              src={`${PF}images/user5.jpg`}
               alt="friend"
               className="rightBarFollowingImg"
             />
-            <sapn className="rigthBarFollowingName">John Doe</sapn>
+            <span className="rigthBarFollowingName">John Doe</span>
           </div>
           <div className="rightBarFollowing">
             <img
-              src="assets/images/user6.jpg"
+              src={`${PF}images/user6.jpg`}
               alt="friend"
               className="rightBarFollowingImg"
             />
-            <sapn className="rigthBarFollowingName">John Doe</sapn>
+            <span className="rigthBarFollowingName">John Doe</span>
           </div>
           <div className="rightBarFollowing">
             <img
-              src="assets/images/user7.jpg"
+              src={`${PF}images/user7.jpg`}
               alt="friend"
               className="rightBarFollowingImg"
             />
-            <sapn className="rigthBarFollowingName">John Doe</sapn>
+            <span className="rigthBarFollowingName">John Doe</span>
           </div>
         </div>
       </>

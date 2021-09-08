@@ -69,6 +69,7 @@
   cursor: pointer;
 }
 Link {
+  text-decoration: none;
 }
 .topbarLink {
   text-decoration: none;

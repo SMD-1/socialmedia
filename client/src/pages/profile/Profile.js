@@ -4,6 +4,8 @@ import Rightbar from "../../Components/rightbar/Rightbar";
 import Feed from "../../Components/feed/Feed";
 import "./profile.css";
 const Profile = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <>
       <Topbar />
@@ -14,12 +16,12 @@ const Profile = () => {
             <div className="profileCover">
               <img
                 className="profileCoverImg"
-                src="/assets/posts/post5.jpg"
+                src={`${PF}posts/post5.jpg`}
                 alt="banner"
               />
               <img
                 className="profileUserImg"
-                src="/assets/Images/user3.jpg"
+                src={`${PF}Images/user3.jpg`}
                 alt="profileImage"
               />
             </div>
@@ -29,7 +31,7 @@ const Profile = () => {
             </div>
           </div>
           <div className="porfileRightBottom">
-            <Feed />
+            <Feed username="test1" />
             <Rightbar profile />
           </div>
         </div>

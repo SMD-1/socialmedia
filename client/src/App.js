@@ -13,7 +13,7 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/profile" exact>
+          <Route path="/profile/:username" exact>
             <Profile />
           </Route>
           <Route path="/login" exact>
