@@ -3,6 +3,7 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Login from "./Components/login/Login";
 import Register from "./Components/register/Register";
+import Error404 from "./Components/error404/Error404";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/register" exact>
             <Register />
+          </Route>
+          <Route path="*" exact>
+            <Error404 />
           </Route>
         </Switch>
       </Router>
