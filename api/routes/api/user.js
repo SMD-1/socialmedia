@@ -47,10 +47,15 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// gat user
-router.get("/:id", async (req, res) => {
+// get user
+router.get("/", async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const userId = req.query.userId;
+    const username = req.query.username;
+
+    const user = userId
+      ? await User.findById(userId)
+      : await User.findOne({ username: username });
     // if we dont want to show some property
     const { password, ...other } = user._doc;
     res.status(200).json(other);
@@ -80,7 +85,7 @@ router.put("/:id/follow", async (req, res) => {
       console.log(err);
     }
   } else {
-    res.status(403).jsonn("You cannot follow yourself!");
+    res.status(403).json("You cannot follow yourself!");
   }
 });
 

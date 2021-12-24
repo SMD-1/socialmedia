@@ -7,21 +7,19 @@ import "./post.css";
 
 const Post = ({ post }) => {
   // console.log(post);
-  const { img, description, createdAt, likes, comment, userId } = post;
-  const [like, setLike] = useState(likes.length);
+  const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users/${userId}`);
-      // console.log(res);
+      const res = await axios.get(`/users?userId=${post.userId}`);
+      // console.log("user: ", res);
       setUser(res.data);
     };
     fetchUser();
-    // eslint-disable-next-line
-  }, [userId]);
+  }, [post.userId]);
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
@@ -33,16 +31,20 @@ const Post = ({ post }) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <Link to={`profile/${user.username}`}>
+            <Link to={`/profile/${user.username}`}>
               <img
-                src={user.profilePicture || `${PF}images/user.png`}
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "images/user.png"
+                }
                 alt="user-profile"
               />
             </Link>
             <div className="postDetails">
               <span className="postUserName">{user.username}</span>
               <small>
-                <span className="postDate">{format(createdAt)}</span>
+                <span className="postDate">{format(post.createdAt)}</span>
               </small>
             </div>
           </div>
@@ -53,9 +55,9 @@ const Post = ({ post }) => {
         <hr className="postHr" />
         <div className="postCenter">
           <span className="caption">
-            <p> {description} </p>
+            <p> {post?.description} </p>
           </span>
-          <img src={PF + img} alt="post1" className="postImage" />
+          <img src={PF + post.img} alt="post" className="postImage" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
@@ -73,9 +75,9 @@ const Post = ({ post }) => {
             />
             <span className="likeCount">{like} people liked it</span>
           </div>
-          <div className="postBottomRight">
-            <span className="postComment">{comment} Comments</span>
-          </div>
+          {/* <div className="postBottomRight">
+            <span className="postComment">{post.comment} Comments</span>
+          </div> */}
         </div>
       </div>
     </div>
