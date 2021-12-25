@@ -3,10 +3,10 @@ import { User } from "../../data";
 import Online from "../online/Online";
 import "./rightbar.css";
 
-const Rightbar = ({ profile }) => {
+const Rightbar = ({ user }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  console.log(profile);
+  // console.log(profile);
   const HomeRightBar = () => {
     return (
       <>
@@ -36,15 +36,15 @@ const Rightbar = ({ profile }) => {
         <div className="rightBarInfo">
           <div className="rightBarInfoItem">
             <span className="rightBarInfoKey">From: </span>
-            <span className="rightBarInfoValue">Mumbai</span>
+            <span className="rightBarInfoValue">{user.city}</span>
           </div>
           <div className="rightBarInfoItem">
             <span className="rightBarInfoKey">Department: </span>
-            <span className="rightBarInfoValue">CSE</span>
+            <span className="rightBarInfoValue">{user.department}</span>
           </div>
           <div className="rightBarInfoItem">
             <span className="rightBarInfoKey">Semester: </span>
-            <span className="rightBarInfoValue">5th</span>
+            <span className="rightBarInfoValue">{user.semester}</span>
           </div>
         </div>
         <h4 className="rightBarTitle">User Friends</h4>
@@ -104,7 +104,7 @@ const Rightbar = ({ profile }) => {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {profile ? <ProfileRightBar /> : <HomeRightBar />}
+        {user ? <ProfileRightBar /> : <HomeRightBar />}
       </div>
     </div>
   );

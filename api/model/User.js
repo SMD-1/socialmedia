@@ -44,11 +44,15 @@ const UserSchema = new mongoose.Schema(
       type: String,
       max: 200,
     },
-    city: {
+    department: {
       type: String,
       max: 50,
     },
     from: {
+      type: String,
+      max: 50,
+    },
+    semester: {
       type: String,
       max: 50,
     },
