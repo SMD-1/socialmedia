@@ -1,8 +1,8 @@
 import "./App.css";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
-import Login from "./Components/login/Login";
-import Register from "./Components/register/Register";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 import Error404 from "./Components/error404/Error404";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
