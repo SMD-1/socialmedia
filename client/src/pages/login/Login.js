@@ -1,16 +1,24 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { loginCall } from "../../apiCall";
+import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
 const Login = () => {
   // here we can also use useState
   const email = useRef();
   const password = useRef();
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
     console.log(password.current.value);
   };
 
+  console.log(user);
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -35,7 +43,9 @@ const Login = () => {
               required
               ref={password}
             />
-            <button className="loginButton">Login</button>
+            <button className="loginButton">
+              {isFetching ? "Loading..." : "Login"}
+            </button>
             <span className="forgotPass">Forgot Password ?</span>
             <button className="createNewAcc">Create a new Account</button>
           </form>

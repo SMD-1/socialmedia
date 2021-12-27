@@ -1,4 +1,4 @@
-import { Children, createContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 
 const initialState = {
@@ -8,8 +8,7 @@ const initialState = {
 };
 
 export const AuthContext = createContext(initialState);
-
-export const AuthContextProvider = () => {
+export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   return (
@@ -21,7 +20,7 @@ export const AuthContextProvider = () => {
         dispatch,
       }}
     >
-      {Children}
+      {children}
     </AuthContext.Provider>
   );
 };
