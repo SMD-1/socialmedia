@@ -43,7 +43,7 @@
   border: 1px solid #000;
   outline: none;
 }
-button {
+.loginButton {
   height: 40px;
   font-size: 1rem;
   font-weight: bold;
@@ -53,6 +53,9 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
+}
+.loginButton:disabled {
+  cursor: not-allowed;
 }
 .forgotPass {
   text-align: center;

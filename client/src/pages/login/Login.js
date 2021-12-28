@@ -43,7 +43,7 @@ const Login = () => {
               required
               ref={password}
             />
-            <button className="loginButton">
+            <button className="loginButton" disabled={isFetching}>
               {isFetching ? "Loading..." : "Login"}
             </button>
             <span className="forgotPass">Forgot Password ?</span>
