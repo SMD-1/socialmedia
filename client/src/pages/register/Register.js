@@ -1,13 +1,16 @@
 import "./register.css";
 import { useRef } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const username = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
+  const history = useHistory();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     if (passwordAgain.current.value !== password.current.value) {
       password.current.setCustomValidity("Passwords don't match");
@@ -16,9 +19,17 @@ const Register = () => {
         username: username.current.value,
         email: email.current.value,
         password: password.current.value,
-        passwordAgain: passwordAgain.current.value,
       };
+      try {
+        await axios.post("/auth/register", user);
+        history.push("/login");
+      } catch (err) {
+        console.log(err);
+      }
     }
+  };
+  const onClick = () => {
+    history.push("/login");
   };
   return (
     <div className="login">
@@ -61,7 +72,10 @@ const Register = () => {
             <button className="loginButton" type="submit">
               Signup
             </button>
-            <button className="createNewAcc">Login into Account</button>
+            <p className="or">OR</p>
+            <button className="createNewAcc" onClick={onClick}>
+              Already have an account?
+            </button>
           </form>
         </div>
       </div>
