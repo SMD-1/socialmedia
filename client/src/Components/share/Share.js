@@ -16,20 +16,21 @@ const Share = () => {
       userId: user._id,
       description: description.current.value,
     };
-    // if (file) {
-    //   const data = new FormData();
-    //   const fileName = Data.now() + file.name;
-    //   data.append("file", file);
-    //   data.append("name", fileName);
-    //   newPost.img = fileName;
-    //   try {
-    //     await axios.post("/upload", data);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("file", file);
+      data.append("name", fileName);
+      newPost.img = fileName;
+      try {
+        await axios.post("/upload", data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
     try {
       await axios.post("/posts", newPost);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -43,7 +44,7 @@ const Share = () => {
             src={
               user.profilePicture
                 ? PF + user.profilePicture
-                : PF + "images/user.png"
+                : PF + "person/user.png"
             }
             alt="user-profile"
           />

@@ -37,7 +37,7 @@ const Profile = () => {
               />
               <img
                 className="profileUserImg"
-                src={user.profilePicture || PF + "images/user.png"}
+                src={user.profilePicture || PF + "person/user.png"}
                 alt="profileImage"
               />
             </div>

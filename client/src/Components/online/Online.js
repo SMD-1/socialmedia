@@ -2,7 +2,7 @@ import "./online.css";
 
 const Online = ({ user }) => {
   const { username, profilePicture } = user;
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PF = process.env.REACT_APP_DATA;
 
   return (
     <li className="rightbarFriend">

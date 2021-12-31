@@ -22,6 +22,8 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(express.json({ extend: false }));
 app.use(helmet());
 app.use(morgan("common"));
@@ -31,7 +33,7 @@ const storage = multer.diskStorage({
     cb(null, "public/post");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, req.body.name);
   },
 });
 
@@ -43,7 +45,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
     console.log(err);
   }
 });
-// app.use("/post1", express.static(path.join(__dirname, "public/post")));
 
 app.use("/users", require("./routes/api/user"));
 app.use("/auth", require("./routes/api/auth"));

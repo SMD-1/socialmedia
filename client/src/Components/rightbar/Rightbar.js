@@ -51,7 +51,15 @@ const Rightbar = ({ user }) => {
         <div className="rightBarFollowings">
           <div className="rightBarFollowing">
             <img
-              src={`${PF}images/user1.jpg`}
+              src={PF + "person/user1.jpg"}
+              alt="friend"
+              className="rightBarFollowingImg"
+            />
+            <span className="rigthBarFollowingName">John Doe1</span>
+          </div>
+          <div className="rightBarFollowing">
+            <img
+              src={PF + "person/user2.jpg"}
               alt="friend"
               className="rightBarFollowingImg"
             />
@@ -59,7 +67,7 @@ const Rightbar = ({ user }) => {
           </div>
           <div className="rightBarFollowing">
             <img
-              src={`${PF}images/user2.jpg`}
+              src={PF + "person/user3.jpg"}
               alt="friend"
               className="rightBarFollowingImg"
             />
@@ -67,7 +75,7 @@ const Rightbar = ({ user }) => {
           </div>
           <div className="rightBarFollowing">
             <img
-              src={`${PF}images/user4.jpg`}
+              src={PF + "person/user4.jpg"}
               alt="friend"
               className="rightBarFollowingImg"
             />
@@ -75,7 +83,7 @@ const Rightbar = ({ user }) => {
           </div>
           <div className="rightBarFollowing">
             <img
-              src={`${PF}images/user5.jpg`}
+              src={PF + "person/user5.jpg"}
               alt="friend"
               className="rightBarFollowingImg"
             />
@@ -83,15 +91,7 @@ const Rightbar = ({ user }) => {
           </div>
           <div className="rightBarFollowing">
             <img
-              src={`${PF}images/user6.jpg`}
-              alt="friend"
-              className="rightBarFollowingImg"
-            />
-            <span className="rigthBarFollowingName">John Doe</span>
-          </div>
-          <div className="rightBarFollowing">
-            <img
-              src={`${PF}images/user7.jpg`}
+              src={PF + "person/user6.jpg"}
               alt="friend"
               className="rightBarFollowingImg"
             />

@@ -29,7 +29,9 @@ const Post = ({ post }) => {
   const likeHandler = () => {
     try {
       axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
     // document.getElementById("likeButton").style.color = "#1D4ED8";
@@ -45,7 +47,7 @@ const Post = ({ post }) => {
                 src={
                   user.profilePicture
                     ? PF + user.profilePicture
-                    : PF + "images/user.png"
+                    : PF + "person/user.png"
                 }
                 alt="user-profile"
               />
