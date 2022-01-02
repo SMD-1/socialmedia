@@ -86,9 +86,9 @@ const Post = ({ post }) => {
             />
             <span className="likeCount">{like} people liked it</span>
           </div>
-          {/* <div className="postBottomRight">
+          <div className="postBottomRight">
             <span className="postComment">{post.comment} Comments</span>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

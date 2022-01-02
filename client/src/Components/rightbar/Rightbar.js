@@ -17,7 +17,7 @@ const Rightbar = ({ user }) => {
           </span>
         </div>
         <div className="sponsors">
-          <img src="assets/images/sponsor.jpg" alt="sponsor" />
+          <img src="assets/person/sponsor.jpg" alt="sponsor" />
         </div>
         <h3 className="rightbarTitle">Online Friends</h3>
         <ul className="rightbarFriendList">

@@ -22,6 +22,7 @@ const Share = () => {
       data.append("file", file);
       data.append("name", fileName);
       newPost.img = fileName;
+      console.log("New Post", newPost);
       try {
         await axios.post("/upload", data);
       } catch (err) {
@@ -30,7 +31,7 @@ const Share = () => {
     }
     try {
       await axios.post("/posts", newPost);
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -68,6 +69,7 @@ const Share = () => {
               <input
                 style={{ display: "none" }}
                 type="file"
+                name="file"
                 id="file"
                 accept=".png,.jpeg,.jpg"
                 onChange={(e) => setFile(e.target.files[0])}

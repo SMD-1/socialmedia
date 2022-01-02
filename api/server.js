@@ -30,14 +30,15 @@ app.use(morgan("common"));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/post");
+    cb(null, "./public/post");
   },
   filename: (req, file, cb) => {
-    cb(null, req.body.name);
+    console.log(file);
+    cb(null, Date.now() + file.originalname);
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 app.post("/upload", upload.single("file"), (req, res) => {
   try {
     return res.status(200).json("File uploaded successfully");
