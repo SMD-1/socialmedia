@@ -15,28 +15,33 @@ const Share = () => {
     const newPost = {
       userId: user._id,
       description: description.current.value,
+      img: "",
     };
     if (file) {
-      const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("file", file);
-      data.append("name", fileName);
+      const formData = new FormData();
+      const fileName = file.name;
+      formData.append("file", file);
+      formData.append("name", fileName);
       newPost.img = fileName;
       console.log("New Post", newPost);
       try {
-        await axios.post("/upload", data);
+        const res = await axios.post("/upload", formData);
+        console.log(res);
       } catch (err) {
-        console.log(err.message);
+        console.log(err);
       }
     }
+
     try {
       await axios.post("/posts", newPost);
-      // window.location.reload();
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
   };
 
+  console.log("share", user);
+  console.log("🦢", user.profilePicture);
   return (
     <div className="share">
       <div className="shareWrapper">
