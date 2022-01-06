@@ -57,7 +57,7 @@ router.get("/", async (req, res) => {
       ? await User.findById(userId)
       : await User.findOne({ username: username });
     // if we dont want to show some property
-    const { password, ...other } = user._doc;
+    const { password, updatedAt, ...other } = user._doc;
     res.status(200).json(other);
   } catch (err) {
     res.status(500).json(err);

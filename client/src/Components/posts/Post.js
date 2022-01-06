@@ -21,6 +21,7 @@ const Post = ({ post }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users?userId=${post.userId}`);
+      console.log("👽", post.userId);
       // console.log("user: ", res);
       setUser(res.data);
     };
@@ -68,7 +69,11 @@ const Post = ({ post }) => {
           <span className="caption">
             <p> {post?.description} </p>
           </span>
-          <img src={PF + post.img} alt="post" className="postImage" />
+          {post.img ? (
+            <img src={PF + post.img} alt="post" className="postImage" />
+          ) : (
+            ``
+          )}
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

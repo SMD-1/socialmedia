@@ -6,7 +6,6 @@ import "./rightbar.css";
 const Rightbar = ({ user }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  // console.log(profile);
   const HomeRightBar = () => {
     return (
       <>
