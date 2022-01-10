@@ -18,7 +18,7 @@ const Login = () => {
     console.log(password.current.value);
   };
 
-  console.log(user);
+  console.log("user after login", user);
   return (
     <div className="login">
       <div className="loginWrapper">
