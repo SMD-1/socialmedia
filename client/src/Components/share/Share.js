@@ -41,7 +41,6 @@ const Share = () => {
   };
 
   console.log("share", user);
-  console.log("🦢", user.profilePicture);
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -69,10 +68,9 @@ const Share = () => {
               className="shareImg"
               alt="postImage"
             />
-            <MaterialIcon.MdClear
-              className="shareCancel"
-              onClick={() => setFile(null)}
-            />
+            <div className="shareCancel">
+              <MaterialIcon.MdClear size="1rem" onClick={() => setFile(null)} />
+            </div>
           </div>
         )}
         <form className="shareBottom" onSubmit={submitHandler}>
