@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import Messenger from "./pages/messenger/Messenger";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/register" exact>
             {user ? <Redirect to="/" /> : <Register />}
+          </Route>
+          <Route path="/messenger" exact>
+            {!user ? <Redirect to="/" /> : <Messenger />}
           </Route>
           <Route path="*" exact>
             <Error404 />
