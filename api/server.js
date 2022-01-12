@@ -50,6 +50,8 @@ app.post("/upload", upload.single("file"), (req, res) => {
 app.use("/users", require("./routes/api/user"));
 app.use("/auth", require("./routes/api/auth"));
 app.use("/posts", require("./routes/api/post"));
+app.use("/conversations", require("./routes/api/conversation"));
+app.use("/messages", require("./routes/api/message"));
 
 mongoose.connect(
   process.env.MONGODB_URL,
