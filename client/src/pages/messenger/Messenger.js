@@ -14,6 +14,7 @@ const Messenger = () => {
     const getConversations = async () => {
       try {
         const res = await axios.get("/conversations/" + user._id);
+        // console.log("res", res.data);
         setConversations(res.data);
       } catch (err) {
         console.log(err.message);
@@ -21,7 +22,7 @@ const Messenger = () => {
     };
     getConversations();
   }, [user._id]);
-  console.log(user);
+  // console.log(user);
   console.log("conversations", conversations);
   return (
     <>

@@ -24,7 +24,7 @@ router.get("/:userId", async (req, res) => {
     });
     res.status(200).json(conversation);
   } catch (err) {
-    res.statusMessage(500).json(err);
+    res.status(500).json(err);
   }
 });
 
